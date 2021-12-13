@@ -1,0 +1,19 @@
+<mvc:View 
+    xmlns="sap.m"
+    displayBlock="true"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:u="sap.ui.core"
+    xmlns:form="sap.ui.layout.form" 
+    controllerName="com.ed.mii.controller.facilityMap">
+    <App id="facilityMapApp_Id">
+        <pages>
+            <Page id="facilityMapPageId" title="{i18n>facilityMapTitle}">      
+                <content>
+                    <Panel width="auto">
+                      
+                    </Panel>
+                </content>
+            </Page>
+        </pages>
+    </App>
+</mvc:View>

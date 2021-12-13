@@ -1,0 +1,14 @@
+.TextLinkStyle{
+    font-size: 105%;
+	color: rgb(59, 160, 33);
+}
+
+.TextHeaderMainStyle{
+    font-size: 110%;
+    font-style: italic;
+    color:rgb(255, 255, 255)
+}
+
+.SapDefaultColourStyle {
+	background-color: #526eb9;
+}

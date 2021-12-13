@@ -1,0 +1,87 @@
+<mvc:View 
+    xmlns="sap.m"
+    displayBlock="true"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:u="sap.ui.core"
+    xmlns:form="sap.ui.layout.form" 
+    xmlns:f="sap.f"
+    xmlns:card="sap.f.cards"
+	xmlns:w="sap.ui.integration.widgets"
+    controllerName="com.ed.mii.controller.main">
+    <App id="mainApp_Id">
+        <pages>
+            <Page id="mainPageId" title="{i18n>mainPageTitle}">      
+                <content>
+                    <Panel width="auto">
+                        <!--header-->
+                        <HBox alignItems="Center" justifyContent="Center" class="SapDefaultColourStyle" height="500%">
+                            <Label text="{i18n>mainDashboardTitle}" class="TextHeaderMainStyle sapUiMediumMarginEnd"/>
+                        </HBox>
+                        <!--grid content-->
+                        <f:GridContainer
+                        id="grid1"
+                        class="sapUiSmallMargin"
+                        snapToRow="true">
+                        <f:layout>
+                            <f:GridContainerSettings rowSize="84px" columnSize="84px" gap="8px" />
+                        </f:layout>
+                        <GenericTile header="{i18n>geographicFacilityMapTitle}" subheader="Open Map" press="onPressOpenMappage">
+                            <layoutData>
+                                <f:GridContainerItemLayoutData minRows="2" columns="2" />
+                            </layoutData>
+                            <TileContent footer="Facility List">
+                                <ImageContent src="sap-icon://home-share" />
+                            </TileContent>
+                        </GenericTile>
+                        <GenericTile header="{i18n>activeWorkerListTitle}" subheader="" press="onPressOpenActiveWorkerpage">
+                            <layoutData>
+                                <f:GridContainerItemLayoutData minRows="2" columns="2" />
+                            </layoutData>
+                            <TileContent>
+                                <ImageContent src="sap-icon://activities" />
+                            </TileContent>
+                        </GenericTile>
+                        <GenericTile header="{i18n>calenderTitle}">
+                            <layoutData>
+                                <f:GridContainerItemLayoutData minRows="2" columns="2" />
+                            </layoutData>
+                            <TileContent footer="Today">
+                                <ImageContent src="sap-icon://check-availability"/>
+                                <NumericContent id="numericContainerId" value="12" />
+                            </TileContent>
+                        </GenericTile>
+
+
+
+            
+                        <w:Card manifest="{manifests>/listContent/mediumList}">
+                            <w:layoutData>
+                                <f:GridContainerItemLayoutData minRows="4" columns="3" />
+                            </w:layoutData>
+                        </w:Card>
+                        <w:Card manifest="{manifests>/listContent/largeList}">
+                            <w:layoutData>
+                                <f:GridContainerItemLayoutData minRows="4" columns="4" />
+                            </w:layoutData>
+                        </w:Card>
+                        <w:Card manifest="{manifests>/listContent/smallList}">
+                            <w:layoutData>
+                                <f:GridContainerItemLayoutData minRows="2" columns="2" />
+                            </w:layoutData>
+                        </w:Card>    
+                        <GenericTile header="Success Map" subheader="Access Success Map">
+                            <layoutData>
+                                <f:GridContainerItemLayoutData minRows="2" columns="2" />
+                            </layoutData>
+                            <TileContent unit="EUR" footer="Current Quarter">
+                                <ImageContent src="sap-icon://map-3" />
+                            </TileContent>
+                        </GenericTile>
+            
+                    </f:GridContainer>
+                    </Panel>
+                </content>
+            </Page>
+        </pages>
+    </App>
+</mvc:View>

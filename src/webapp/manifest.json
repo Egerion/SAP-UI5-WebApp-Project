@@ -1,0 +1,115 @@
+{
+	"_version": "1.8.0",
+	"sap.app": {
+		"id": "com.ed.mii",
+		"type": "application",
+		"i18n": "i18n/i18n.properties",
+		"applicationVersion": {
+			"version": "1.0.0"
+		},
+		"title": "{{appTitle}}",
+		"description": "{{appDescription}}",
+		"sourceTemplate": {
+			"id": "ui5template.basicSAPUI5ApplicationProject",
+			"version": "1.38.11"
+		}	
+	},
+	"sap.ui": {
+		"technology": "UI5",
+		"icons": {
+			"icon": "",
+			"favIcon": "SAP",
+			"phone": "",
+			"phone@2": "",
+			"tablet": "",
+			"tablet@2": ""
+		},
+		"deviceTypes": {
+			"desktop": true,
+			"tablet": true,
+			"phone": true
+		},
+		"supportedThemes": [
+			"sap_hcb",
+			"sap_belize"
+		]
+	},
+	"sap.ui5": {
+		"rootView": {
+			"viewName": "com.ed.mii.view.main",
+			"type": "XML",
+			"id": "mainApp"
+		},
+		"dependencies": {
+			"minUI5Version": "1.30.0",
+			"libs": {
+				"sap.ui.layout": {},
+				"sap.ui.core": {},
+				"sap.m": {}
+			}
+		},
+		"config": {
+			"sample": {
+				"files": [
+					"manifest.json",
+                    "images/solvia_logo_small.png"
+				]
+			}
+		},
+		"contentDensities": {
+			"compact": false,
+			"cozy": true
+		},
+		"models": {
+			"i18n": {
+				"type": "sap.ui.model.resource.ResourceModel",
+				"settings": {
+					"bundleName": "com.ed.mii.i18n.i18n"
+				}
+			}
+		},
+		"resources": {
+			"css": [
+				{
+					"uri": "css/style.css"
+				}
+			]
+		},
+		"routing": {
+			"config": {
+				"clearTarget": true,
+				"controlId": "mainApp",
+				"controlAggregation": "pages",
+				"routerClass": "sap.m.routing.Router",
+				"viewType": "XML",
+				"async": true,
+				"transition": "fade", 
+				"viewPath": "com.ed.mii.view"
+			},
+			"routes": [
+				{
+					"pattern": "",
+					"name": "Home Page",
+					"target": "main"
+				},	
+                {
+					"pattern": "facilityMap",
+					"name": "facilityMap",
+					"target": "facilityMap"
+				}
+			],
+			"targets": {
+				"main": {
+					"viewType": "XML",
+					"viewName": "main",
+					"transition": "fade"
+				},
+                "facilityMap": {
+					"viewType": "XML",
+					"viewName": "facilityMap",
+					"transition": "slide"
+				}
+			}
+		}
+	}
+}
