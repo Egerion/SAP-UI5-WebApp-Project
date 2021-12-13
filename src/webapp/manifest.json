@@ -96,6 +96,11 @@
 					"pattern": "facilityMap",
 					"name": "facilityMap",
 					"target": "facilityMap"
+				},	
+                {
+					"pattern": "consumableMaterial",
+					"name": "consumableMaterial",
+					"target": "consumableMaterial"
 				}
 			],
 			"targets": {
@@ -107,6 +112,11 @@
                 "facilityMap": {
 					"viewType": "XML",
 					"viewName": "facilityMap",
+					"transition": "slide"
+				},
+                "consumableMaterial": {
+					"viewType": "XML",
+					"viewName": "consumableMaterial",
 					"transition": "slide"
 				}
 			}

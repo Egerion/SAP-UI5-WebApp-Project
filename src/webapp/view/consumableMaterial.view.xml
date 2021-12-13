@@ -1,0 +1,76 @@
+<mvc:View
+    xmlns="sap.m"
+    displayBlock="true" 
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:u="sap.ui.core"
+    xmlns:form="sap.ui.layout.form"
+    controllerName="com.ed.mii.controller.consumableMaterial">
+    <App id="maintennancePageApp">
+        <pages>
+            <Page id="mainPage" title="Sarf Malzeme Yönetim Paneli">
+                <content>
+                    <HBox>
+
+                        <CheckBox id="checkBoxActiveOrders" text="Aktif Siparişler" select="onCheckFilterTable" class="sapUiSmallMarginBeginEnd" selected="false" />
+                        <CheckBox class="sapUiSmallMarginBeginEnd" id="cBoxRunSimulation" text="Simulasyon Önerisi" select="onSelectRunSimulation" selected="false" />
+                        <VBox width="150%"></VBox>
+
+                        <Button text="Yenile" justifyContent="Center" press="onPressRefreshTable" ariaDescribedBy="defaultButtonDescription genericButtonDescription" />
+
+                        <OverflowToolbar width="100%" class="sapUiSmallMarginBeginEnd">
+                            <SearchField id="matterialSearchFieldId" placeholder="filtrele" liveChange="onFilterSearch" width="300px" visible="false" />
+                        </OverflowToolbar>
+                    </HBox>
+                    <VBox>
+                        <FlexBox class="sapUiMediumMarginBottom" height="80%" width="100%">
+                            <Table id="matterialTableId" items="{materialModel>/Rowsets/Rowset/0/Row}">
+                                <columns>
+                                    <Column>
+                                        <Text text="Malzeme" />
+                                    </Column>
+                                    <Column>
+                                        <Text text="Sayaç Bilgisi" />
+                                    </Column>
+                                    <Column>
+                                        <Text text="Malzeme Sağlığı" />
+                                    </Column>
+                                    <Column>
+                                        <Text text="Değişim Periyodu" />
+                                    </Column>
+                                    <Column id="cSimulationSuggestion" visible="false">
+                                        <Text text="Önerilen D.P." visible="true" />
+                                    </Column>
+                                    <Column>
+                                        <Text text="Son Değişim Tarihi" />
+                                    </Column>
+                                </columns>
+                                <items>
+                                    <ColumnListItem>
+                                        <cells>
+                                            <Text text="{materialModel>MATNR}" />
+                                            <Text text="{materialModel>COUNT}" />
+                                            <u:Icon src="{= ${materialModel>COUNT} > ${materialModel>ATWRT} ? 'sap-icon://alert' : 'sap-icon://accept' }" color="#031E48" class="size5">
+                                                <u:layoutData>
+                                                    <FlexItemData growFactor="5" />
+                                                </u:layoutData>
+                                            </u:Icon>
+                                            <Text text="{materialModel>ATWRT}" />
+                                            <Text text="{materialModel>COUNT_SIMU}" />
+                                            <Text text="{materialModel>UPDDATE}" />
+                                        </cells>
+                                    </ColumnListItem>
+                                </items>
+                            </Table>
+                        </FlexBox>
+                    </VBox>
+                </content>
+                <footer>
+                    <OverflowToolbar id="otbFooter" width="auto">
+                        <ToolbarSpacer />
+                        <OverflowToolbarButton text="Favorite" icon="sap-icon://favorite" press="onPressOpenAdvancedMode" />
+                    </OverflowToolbar>
+                </footer>
+            </Page>
+        </pages>
+    </App>
+</mvc:View>

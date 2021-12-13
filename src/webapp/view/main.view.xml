@@ -8,7 +8,7 @@
     xmlns:card="sap.f.cards"
 	xmlns:w="sap.ui.integration.widgets"
     controllerName="com.ed.mii.controller.main">
-    <App id="mainApp_Id">
+    <App id="mainApp">
         <pages>
             <Page id="mainPageId" title="{i18n>mainPageTitle}">      
                 <content>
@@ -50,7 +50,14 @@
                                 <NumericContent id="numericContainerId" value="12" />
                             </TileContent>
                         </GenericTile>
-
+                        <GenericTile header="Success Map" subheader="Consumable Material Panel" press="onPressConsumableMaterialpage">
+                            <layoutData>
+                                <f:GridContainerItemLayoutData minRows="2" columns="2" />
+                            </layoutData>
+                            <TileContent unit="EUR" footer="Current Quarter">
+                                <ImageContent src="sap-icon://map-3" />
+                            </TileContent>
+                        </GenericTile>
 
 
             
@@ -69,14 +76,7 @@
                                 <f:GridContainerItemLayoutData minRows="2" columns="2" />
                             </w:layoutData>
                         </w:Card>    
-                        <GenericTile header="Success Map" subheader="Access Success Map">
-                            <layoutData>
-                                <f:GridContainerItemLayoutData minRows="2" columns="2" />
-                            </layoutData>
-                            <TileContent unit="EUR" footer="Current Quarter">
-                                <ImageContent src="sap-icon://map-3" />
-                            </TileContent>
-                        </GenericTile>
+                      
             
                     </f:GridContainer>
                     </Panel>

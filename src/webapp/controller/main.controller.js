@@ -15,13 +15,13 @@ sap.ui.define(
             let day =  new Date().getDate();
             this.byId("numericContainerId").setValue(Number(day));
         },
-        onPressOpenMappage: function(){
-            debugger;
-            let oRouter = sap.ui.core.UIComponent.getRouterFor(this);
-            oRouter.navTo("facilityMap");
+        onPressOpenMappage: function(oEvent){
+            sap.ui.core.UIComponent.getRouterFor(this).navTo("facilityMap");
         },
-        onPressOpenActiveWorkerpage: function(){
-
+        onPressOpenActiveWorkerpage: function(oEvent){
+        },
+        onPressConsumableMaterialpage: function(oEvent){
+            sap.ui.core.UIComponent.getRouterFor(this).navTo("consumableMaterial");
         },
         });
     }

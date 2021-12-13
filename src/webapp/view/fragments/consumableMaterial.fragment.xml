@@ -1,0 +1,56 @@
+<core:FragmentDefinition
+        xmlns="sap.m"
+        xmlns:core="sap.ui.core"
+        xmlns:form="sap.ui.layout.form">
+    <Dialog id="diagSimulation" icon="sap-icon://action-settings" title="Uzman Ayarları">
+        <form:SimpleForm editable="true" layout="ResponsiveGridLayout">
+            <form:content>
+                <VBox>
+                    <Label text="iterasyon parametreleri"/>
+                    <Input
+                        id="ipBeginStep"
+                        placeholder="Başlangıç Adımı (H1)"
+                        liveChange="onChangeCalculatePermutation"
+                        type="Number"/>
+                    <Input
+                        id="ipEndStep"
+                        placeholder="Son Adım (H2)"
+                        liveChange="onChangeCalculatePermutation"
+                        type="Number"/>
+                    <Input
+                        id="ipStep"
+                        placeholder="Adım (H3)"
+                        liveChange="onChangeCalculatePermutation"
+                        type="Number"/>
+                    <Label
+                        id="permutationResult"
+                        class="sapUiSmallMarginBeginEnd myRedTextButton"
+                        text="placeholder"
+                        visible="false">
+                    </Label>
+                    <HBox visible="false">
+                        <ComboBox justifyContent="Center" alignItems="Center" placeholder="..." id="cbMaterialNames" items="{materialModel>/Rowsets/Rowset/0/Row}">
+                            <items>
+                                <core:Item key="{materialModel>MATNR}" text= "{materialModel>MATNR}" />
+                            </items>
+                        </ComboBox>
+                        <Label
+                            id="lbPermutativeWeight"
+                            class="sapUiSmallMarginBeginEnd myRedTextButton"
+                            text="placeholder"
+                            selectionChange="lbConsumableMaterialChange"
+                            visible="false">
+                        </Label>
+                    </HBox>
+                </VBox>
+
+            </form:content>
+        </form:SimpleForm>
+        <beginButton>
+            <Button text="Ok" press="onCloseDialog"></Button>
+        </beginButton>
+        <endButton>
+            <Button text="Cancel" press="onCancelDialog"></Button>
+        </endButton>
+    </Dialog>
+</core:FragmentDefinition>
