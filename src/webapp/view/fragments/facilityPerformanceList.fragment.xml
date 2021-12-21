@@ -1,0 +1,72 @@
+<core:FragmentDefinition
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+    xmlns:form="sap.ui.layout.form"   
+    xmlns:viz.data="sap.viz.ui5.data" 
+    xmlns:viz.feeds="sap.viz.ui5.controls.common.feeds" 
+    xmlns:chart="sap.suite.ui.commons" 
+    xmlns:viz="sap.viz.ui5.controls" 
+    xmlns:mvc="sap.ui.core.mvc" 
+    xmlns:grid="sap.ui.layout.cssgrid"
+    xmlns:f="sap.f" 
+    xmlns:l="sap.ui.layout" 
+    xmlns:mc="sap.suite.ui.microchart">
+    <Dialog id="diagSimulation" icon="sap-icon://action-settings" title="Dashbaord Panel">
+        <form:SimpleForm size="auto" editable="true" layout="ResponsiveGridLayout">
+            <form:content>
+                <f:GridList class="sapUiResponsiveContentPadding" items="{gridListItemsModel>/Rowsets/Rowset/0/Row}" growingThreshold="6" growing="true">
+                    <f:customLayout>
+                        <grid:GridBasicLayout gridTemplateColumns="repeat(auto-fit, minmax(15rem, 1fr))" gridTemplateRows="repeat(auto-fit, minmax(15rem, 1fr))" gridGap="0.75rem 0.75rem"></grid:GridBasicLayout>
+                    </f:customLayout>
+                    <f:items>
+                        <f:GridListItem highlightText="{gridListItemsModel>MATNR}" highlight="{= ${gridListItemsModel>STATUS} === 'ACTIVE' ? 'Success' : ${gridListItemsModel>STATUS} === 'HOLD' ? 'Information' : ${gridListItemsModel>STATUS} === 'DOWN' ? 'Error' : ${gridListItemsModel>STATUS} === 'IDLE' ? 'Warning' : 'None' }" type="{type}" unread="{unread}">
+                            <VBox class="sapUiResponsiveMargin">
+                                <viz:VizFrame id="idpiechart" width="auto" uiConfig="{applicationSet:'fiori'}" vizType="pie" vizProperties="{
+                                                       plotArea:{
+                                                                        dataLabel:{visible: true,style:{fontSize:'30px'}}, drawingEffect: 'glossy'
+                                                            },
+                                                        legend:{
+                                                            mouseDownShadow:{color:'#945ECF'},
+                                                        label:{style:{color:'#b90c0d',fontSize:'25px'}}
+                                                            },               
+                                                        title : {text:'Energy-Pie',style:{fontSize:'15px',fontStyle:'italic',color:'#945ECF'}}, legendGroup: {layout:{position: 'left'}}
+                                                        }" selectData="onClickHandlerStack" noDataText="noData" renderComplete="handleRenderComplete">
+                                    <viz:dataset>
+                                        <viz.data:FlattenedDataset id="flattenData" data="{gridListItemsModel>/Rowsets/Rowset/0/Row}">
+                                            <viz.data:dimensions>
+                                                <viz.data:DimensionDefinition name="MATNR" value="{gridListItemsModel>MATNR}" />
+                                            </viz.data:dimensions>
+                                            <viz.data:measures>
+                                                <viz.data:MeasureDefinition name="ENERGY" value="{gridListItemsModel>ENERGY}" />
+                                            </viz.data:measures>
+                                        </viz.data:FlattenedDataset>
+                                    </viz:dataset>
+
+                                    <viz:feeds>
+                                        <viz.feeds:FeedItem uid="size" type="Measure" values="ENERGY" />
+                                        <viz.feeds:FeedItem uid="color" type="Dimension" values="MATNR" />
+                                    </viz:feeds>
+                                </viz:VizFrame>
+                                <layoutData>
+                                    <grid:GridItemLayoutData />
+                                </layoutData>
+                                <Title text="{gridListItemsModel>MATNR}" wrapping="true" />
+                                <Label text="{gridListItemsModel>ENERGY}" wrapping="true" class="TextRaft" />
+
+                                <l:HorizontalLayout>
+                                    <mc:RadialMicroChart size="M" percentage="{gridListItemsModel>ENERGY}" valueColor="{= ${gridListItemsModel>ENERGY} > 70 ? 'Good' : ${gridListItemsModel>ENERGY} > 50 ? 'Critical' : 'Error'}" press="press" class="sapUiSmallMargin"></mc:RadialMicroChart>
+                                </l:HorizontalLayout>
+                            </VBox>
+                        </f:GridListItem>
+                    </f:items>
+                </f:GridList>
+            </form:content>
+        </form:SimpleForm>
+        <beginButton>
+            <Button text="Ok" press="onCloseDialog"></Button>
+        </beginButton>
+        <endButton>
+            <Button text="Cancel" press="onCancelDialog"></Button>
+        </endButton>
+    </Dialog>
+</core:FragmentDefinition>

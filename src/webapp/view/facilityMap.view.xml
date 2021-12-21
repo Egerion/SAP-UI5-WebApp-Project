@@ -11,14 +11,14 @@
     controllerName="com.ed.mii.controller.facilityMap">
     <App id="deneme">
         <pages>
-            <Page id="mainPageId" title="{i18n>mainPageTitle}">
+            <Page id="mainPageId" title="{i18n>facilityMapMainPageTitle}">
                 <content>
                     <l:FixFlex class="fixFlexFixedSize">
                         <l:fixContent>
-                            <m:Panel expandable="true" expanded="{= !${device>/system/phone} }" headerText="Description">
+                            <m:Panel expandable="true" expanded="{= !${device>/system/phone} }" headerText="">
                                 <m:headerToolbar>
                                     <m:Toolbar>
-                                        <m:Title text="Description" />
+                                        <m:Title text="Additional Content" />
                                         <m:ToolbarSpacer />
                                         <m:Button id="btnLegend" icon="sap-icon://legend" press="onPressLegend" tooltip="Hide legend" />
                                         <m:Button id="btnResize" icon="sap-icon://resize" press="onPressResize" tooltip="Minimize" />
@@ -26,9 +26,9 @@
                                 </m:headerToolbar>
                                 <m:content>
                                     <m:VBox class="sapUiTinyMargin">
-                                        <m:Text text="You can use containers to display an arbitrary SAP UI5 control on the map. The map control only provides the container. The application can personalize the container (fill, border, size) and add an arbitrary SAP UI5 control." />
-                                        <m:Text class="sapUiTinyMarginTop" text="See also: " />
-                                        <m:Link class="sapUiLargeMarginLeft" text="Visual business best practices" target="_blank" href="test-resources/sap/ui/vbm/bestpractices.html" />
+                                        <m:Text text="{i18n>facilityMapHeaderText}" />
+                                        <m:Text class="sapUiTinyMarginTop" text="" />
+                                        <m:Link class="sapUiLargeMarginLeft" text="Solvia Official Site" target="_blank" href="https://www.solviads.com" />
                                     </m:VBox>
                                 </m:content>
                             </m:Panel>
@@ -38,16 +38,16 @@
                                 <vbm:Containers items="{/Containers}">
                                     <vbm:Container position="{loc}">
                                         <vbm:item>
-                                            <chart:HarveyBallMicroChart size="XS" total="{total}" colorPalette="#5cbae6" showTotal="false" showFractions="false" totalScale="Mrd">
+                                            <chart:HarveyBallMicroChart press="onPressMicroChart" size="M" total="{total}" colorPalette="#5cbae6" showTotal="true" showFractions="false" totalScale="Capacity">
                                                 <chart:items>
-                                                    <chart:HarveyBallMicroChartItem fraction="{german}" fractionScale="Mrd" />
+                                                    <chart:HarveyBallMicroChartItem fraction="{OEE Status}" fractionScale="Mrd" />
                                                 </chart:items>
                                             </chart:HarveyBallMicroChart>
                                         </vbm:item>
                                     </vbm:Container>
                                 </vbm:Containers>
                                 <vbm:legend>
-                                    <vbm:Legend id="legend" caption="Population distribution" items="{/Legend}">
+                                    <vbm:Legend id="legend" caption="{i18n>plantDistributionTitle}" items="{/Legend}">
                                         <vbm:LegendItem text="{text}" color="{color}" />
                                     </vbm:Legend>
                                 </vbm:legend>

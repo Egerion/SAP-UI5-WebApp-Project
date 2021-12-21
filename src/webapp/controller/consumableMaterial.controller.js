@@ -27,7 +27,7 @@ sap.ui.define(
             runXacuteQuery: function(oParams){
                 if(!oParams)
                     oParams = "Param.1=" + "NA";
-                let result = xmlHttpReqXacute.bind(this)("DEMIRBAS_Test/SarfMalzeme/matterialTableXacute", oParams);
+                let result = CFxmlHttpReqXacute.bind(this)("DEMIRBAS_Test/SarfMalzeme/matterialTableXacute", oParams);
                 return result;
             },
             ///@check, filter table for active orders only.

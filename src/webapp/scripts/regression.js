@@ -191,34 +191,3 @@ function CalculateFinalScore(coeffIndex1, coeffIndex2, coeffIndex3, isFinalAnaly
         }
     }
 }
-
-///xmlHttpReqXacute
-function xmlHttpReqXacute(xacutePath, params, sourceView) {
-    if (sourceView) {
-        sourceView.setBusyIndicatorDelay(0);
-        sourceView.open();
-    }
-    var xmlHttp = new XMLHttpRequest(),
-        url = "",
-        response;
-    url = "/XMII/Illuminator?QueryTemplate=" + xacutePath + "&" + params + "&Content-Type=text/json";
-    xmlHttp.onreadystatechange = function () {
-        if (xmlHttp.readyState == 4) {
-            response = JSON.parse(xmlHttp.responseText);
-        }
-    }
-    xmlHttp.open("GET", url, false);
-    xmlHttp.send();
-    if (sourceView) {
-        sourceView.close();
-    } return response;
-}
-
-///test script
-function PageAlert(oMessage) {
-    if (oMessage) {
-        return alert(oMessage);
-    } else {
-        return alert("Default Alert");
-    }
-}

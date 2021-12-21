@@ -23,6 +23,9 @@ sap.ui.define(
         onPressConsumableMaterialpage: function(oEvent){
             sap.ui.core.UIComponent.getRouterFor(this).navTo("consumableMaterial");
         },
+        onPressOEEDashboardpage: function(oEvent){
+            sap.ui.core.UIComponent.getRouterFor(this).navTo("oeeDashboard");
+        },
         });
     }
 );

@@ -73,6 +73,11 @@
 				{
 					"uri": "css/style.css"
 				}
+			],
+            "images": [
+				{
+					"uri": "images/solvia_logo_small.png"
+				}
 			]
 		},
 		"routing": {
@@ -101,7 +106,13 @@
 					"pattern": "consumableMaterial",
 					"name": "consumableMaterial",
 					"target": "consumableMaterial"
+				},	
+                {
+					"pattern": "oeeDashboard",
+					"name": "oeeDashboard",
+					"target": "oeeDashboard"
 				}
+                
 			],
 			"targets": {
 				"main": {
@@ -117,6 +128,11 @@
                 "consumableMaterial": {
 					"viewType": "XML",
 					"viewName": "consumableMaterial",
+					"transition": "slide"
+				},
+                "oeeDashboard": {
+					"viewType": "XML",
+					"viewName": "oeeDashboard",
 					"transition": "slide"
 				}
 			}

@@ -26,6 +26,23 @@ sap.ui.define(
 				"minLOD": 4
 			});
         },
+        onPressMicroChart: function(oEvent){
+            if (!this.facilityPerformanceList) {
+                this.facilityPerformanceList = sap.ui.xmlfragment(this.getView().getId(), "com.ed.mii.view.fragments.facilityPerformanceList", this);
+                this.getView().addDependent(this.facilityPerformanceList);
+            }
+            this.facilityPerformanceList.open();
+        },
+        onCloseDialog: function (oEvent) {
+            if (oEvent) {
+                oEvent.oSource.getParent().close();
+            }
+        },
+        ///@Press, cancel dialog and do nothing.
+        onCancelDialog: function(oEvent){
+            if (oEvent)
+                oEvent.oSource.getParent().close();
+        },
         });
     }
 );
