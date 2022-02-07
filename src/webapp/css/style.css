@@ -12,3 +12,69 @@
 .SapDefaultColourStyle {
 	background-color: #526eb9;
 }
+
+.CMPanelAlertStyle{
+    font-size: 150%;
+}
+
+.vid-border{
+    margin-top: 1.50rem;
+    margin-left: 7.0rem;
+    border-radius: 25px;
+    background: url(https://media.giphy.com/media/sULKEgDMX8LcI/giphy.gif);
+    position: relative;
+    height: 320px;
+    width: 426px;
+    outline: none;
+    border-color: #9ecaed;
+    box-shadow: 0 0 10px #9ecaed;
+}
+
+
+
+.genericLeftLabel{
+    font-weight: bold;
+    margin-top: 2.0rem;
+    margin-left: 11.0rem;
+}
+.genericLeftInput{
+    margin-top: 1.50rem;
+    margin-left: 8.5rem;
+}
+.genericLeftButton{
+    font-weight: bold;
+    margin-top: 2.0rem;
+    margin-left: 12.0rem;
+}
+
+
+
+.genericMiddleLabel{
+    font-weight: bold;
+    margin-top: 2.0rem;
+    margin-left: 21.0rem;
+}
+.genericMiddleButton{
+    font-weight: bold;
+    margin-top: 2.0rem;
+    margin-left: 21.0rem;
+}
+
+
+
+
+.genericRightLabel{
+    font-weight: bold;
+    margin-top: 2.0rem;
+    margin-left: 21.0rem;
+}
+.genericRegInput{
+    font-weight: bold;
+    margin-top: 1.50rem;
+    margin-left: 7.0rem;
+}
+.genericRightButton{
+    font-weight: bold;
+    margin-top: 1.50rem;
+    margin-left: 21.0rem;
+}

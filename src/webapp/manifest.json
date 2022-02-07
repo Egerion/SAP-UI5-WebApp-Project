@@ -111,8 +111,17 @@
 					"pattern": "oeeDashboard",
 					"name": "oeeDashboard",
 					"target": "oeeDashboard"
-				}
-                
+				},	
+                {
+					"pattern": "faceLogin",
+					"name": "faceLogin",
+					"target": "faceLogin"
+				},	
+                {
+					"pattern": "dashboardSample1",
+					"name": "dashboardSample1",
+					"target": "dashboardSample1"
+				}             
 			],
 			"targets": {
 				"main": {
@@ -133,6 +142,16 @@
                 "oeeDashboard": {
 					"viewType": "XML",
 					"viewName": "oeeDashboard",
+					"transition": "slide"
+				},
+                "faceLogin": {
+					"viewType": "XML",
+					"viewName": "faceLogin",
+					"transition": "slide"
+				},
+                "dashboardSample1": {
+					"viewType": "XML",
+					"viewName": "dashboardSample1",
 					"transition": "slide"
 				}
 			}

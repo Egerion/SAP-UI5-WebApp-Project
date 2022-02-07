@@ -1,0 +1,158 @@
+<mvc:View controllerName="com.ed.mii.controller.dashboardSample1" xmlns:viz.data="sap.viz.ui5.data" xmlns:viz.feeds="sap.viz.ui5.controls.common.feeds" xmlns:chart="sap.suite.ui.commons" xmlns:viz="sap.viz.ui5.controls" xmlns="sap.m" xmlns:mvc="sap.ui.core.mvc" xmlns:grid="sap.ui.layout.cssgrid" xmlns:f="sap.f" xmlns:core="sap.ui.core" xmlns:l="sap.ui.layout" xmlns:mc="sap.suite.ui.microchart" displayBlock="true">
+    <App>
+        <pages>
+            <Page showHeader="false">
+                <l:Grid class="sapUiSmallMarginTop" defaultSpan="L12 M12 S12">
+                    <l:content>
+                        <f:GridList class="sapUiResponsiveContentPadding" growing="false">
+                            <f:customLayout>
+                                <grid:GridResponsiveLayout>
+                                    <grid:layoutS>
+                                        <grid:GridSettings gridTemplateColumns="repeat(3, 33%)" gridGap="0.75rem 0.75rem"></grid:GridSettings>
+                                    </grid:layoutS>
+                                    <grid:layoutM>
+                                        <grid:GridSettings gridTemplateColumns="repeat(3, 33%)" gridGap="0.75rem 0.75rem"></grid:GridSettings>
+                                    </grid:layoutM>
+                                    <grid:layoutL>
+                                        <grid:GridSettings gridTemplateColumns="repeat(3, 33%)" gridGap="0.75rem 0.75rem"></grid:GridSettings>
+                                    </grid:layoutL>
+                                    <grid:layoutXL>
+                                        <grid:GridSettings gridTemplateColumns="repeat(3, 33%)" gridGap="0.75rem 0.75rem"></grid:GridSettings>
+                                    </grid:layoutXL>
+                                </grid:GridResponsiveLayout>
+                            </f:customLayout>
+                            <f:GridListItem id="chartOne" type="Active" unread="{unread}" press="onPress">
+                                <VBox class="sapUiResponsiveMargin">
+                                    <viz:VizFrame id="idpiechartQuantity" width="auto" uiConfig="{applicationSet:'fiori'}" vizType="pie" vizProperties="{
+                                                                             plotArea:{
+                                                                                              dataLabel:{visible: true},drawingEffect: 'glossy'
+                                                                                  },
+                                                                                  legendGroup: {layout:{position: 'right'}},
+                                                                                              title : {text:'Top Downtime Reasons'}
+                                                                              }" selectData="onClickHandlerStack" renderComplete="handleRenderComplete">
+                                        <viz:dataset>
+                                            <viz.data:FlattenedDataset id="flattenDataQuantity" data="{topReasonModel>/Rowsets/Rowset/0/Row}">
+                                                <viz.data:dimensions>
+                                                    <viz.data:DimensionDefinition name="REASON" value="{topReasonModel>REASON}" />
+                                                </viz.data:dimensions>
+                                                <viz.data:measures>
+                                                    <viz.data:MeasureDefinition name="REASON_COUNT" value="{topReasonModel>REASON_COUNT}" />
+                                                </viz.data:measures>
+                                            </viz.data:FlattenedDataset>
+                                        </viz:dataset>
+                                        <viz:feeds>
+                                            <viz.feeds:FeedItem uid="size" type="Measure" values="REASON_COUNT" />
+                                            <viz.feeds:FeedItem uid="color" type="Dimension" values="REASON" />
+                                        </viz:feeds>
+                                    </viz:VizFrame>
+                                    <layoutData>
+                                        <grid:GridItemLayoutData />
+                                    </layoutData>
+                                </VBox>
+                            </f:GridListItem>
+                            <f:GridListItem id="chartTwo" type="Active" unread="{unread}" press="onPress">
+                                <VBox class="sapUiResponsiveMargin">
+                                    <viz:VizFrame id="idVizFrameStacked" uiConfig="{applicationSet:'fiori'}" width="auto" vizType='stacked_bar' vizProperties="{
+                                plotArea:{
+                                    dataLabel:{visible: true}, drawingEffect: 'glossy' 
+                        },
+                        legend : {
+                            visible: false
+                            },
+                                    title : {text:'Top Scrap Materials'}
+                    }" selectData="onClickHandlerStack">
+                                        <viz:dataset>
+                                            <viz.data:FlattenedDataset id="VizFrameStacked" data="{topScrapModel>/Rowsets/Rowset/0/Row}">
+                                                <viz.data:dimensions>
+                                                    <viz.data:DimensionDefinition name="MATNR" value="{topScrapModel>MATNR}" />
+                                                    <viz.data:DimensionDefinition name="Fat Percentage" value="{topScrapModel>SCRAP_COUNT}" />
+                                                </viz.data:dimensions>
+                                                <viz.data:measures>
+                                                    <viz.data:MeasureDefinition name="SCRAP_COUNT" value="{topScrapModel>SCRAP_COUNT}" />
+                                                </viz.data:measures>
+                                            </viz.data:FlattenedDataset>
+                                        </viz:dataset>
+                                        <viz:feeds>
+                                            <viz.feeds:FeedItem uid="valueAxis" type="Measure" values="SCRAP_COUNT" />
+                                            <viz.feeds:FeedItem uid="categoryAxis" type="Dimension" values="MATNR" />
+                                            <viz.feeds:FeedItem uid="color" type="Dimension" values="Fat Percentage" />
+                                        </viz:feeds>
+                                    </viz:VizFrame>
+                                    <layoutData>
+                                        <grid:GridItemLayoutData />
+                                    </layoutData>
+                                </VBox>
+                            </f:GridListItem>
+                            <f:GridListItem id="chartThree" type="Active" unread="{unread}" press="onPress">
+                                <VBox class="sapUiResponsiveMargin">
+                                    <viz:VizFrame id="idColumnChart" width="auto" uiConfig="{applicationSet:'fiori'}" vizType="column" vizProperties="{
+                                                                             plotArea:{
+                                                                                              dataLabel:{visible: true},drawingEffect: 'glossy'
+                                                                                  },
+                                                                                  legendGroup: {layout:{position: 'right'}},
+                                                                                              title : {text:'Top Hold Matnr'}
+                                                                              }" selectData="onClickHandlerStack" renderComplete="handleRenderComplete">
+                                        <viz:dataset>
+                                            <viz.data:FlattenedDataset id="holdData" data="{topNodeInHold>/Rowsets/Rowset/0/Row}">
+                                                <viz.data:dimensions>
+                                                    <viz.data:DimensionDefinition name="NODE_ID" value="{topNodeInHold>NODE_ID}" />
+                                                </viz.data:dimensions>
+                                                <viz.data:measures>
+                                                    <viz.data:MeasureDefinition name="HOLD_COUNT" value="{topNodeInHold>HOLD_COUNT}" />
+                                                </viz.data:measures>
+                                            </viz.data:FlattenedDataset>
+                                        </viz:dataset>
+                                        <viz:feeds>
+                                            <viz.feeds:FeedItem uid="valueAxis" type="Measure" values="HOLD_COUNT" />
+                                            <viz.feeds:FeedItem uid="categoryAxis" type="Dimension" values="NODE_ID" />
+                                        </viz:feeds>
+                                    </viz:VizFrame>
+                                    <layoutData>
+                                        <grid:GridItemLayoutData />
+                                    </layoutData>
+                                </VBox>
+                            </f:GridListItem>
+                        </f:GridList>
+                        <f:GridList class="sapUiResponsiveContentPadding" items="{gridListItemsModel>/0}" growingThreshold="4" growing="false">
+                            <f:customLayout>
+                                <grid:GridResponsiveLayout>
+                                    <grid:layoutS>
+                                        <grid:GridSettings gridTemplateColumns="repeat(4, 25%)" gridTemplateRows="repeat(1, 100%)" gridGap="0.75rem 0.75rem"></grid:GridSettings>
+                                    </grid:layoutS>
+                                    <grid:layoutM>
+                                        <grid:GridSettings gridTemplateColumns="repeat(4, 25%)" gridTemplateRows="repeat(1, 100%)" gridGap="0.75rem 0.75rem"></grid:GridSettings>
+                                    </grid:layoutM>
+                                    <grid:layoutL>
+                                        <grid:GridSettings gridTemplateColumns="repeat(4, 25%)" gridTemplateRows="repeat(1, 100%)" gridGap="0.75rem 0.75rem"></grid:GridSettings>
+                                    </grid:layoutL>
+                                    <grid:layoutXL>
+                                        <grid:GridSettings gridTemplateColumns="repeat(4, 25%)" gridTemplateRows="repeat(1, 100%)" gridGap="0.75rem 0.75rem"></grid:GridSettings>
+                                    </grid:layoutXL>
+                                </grid:GridResponsiveLayout>
+                            </f:customLayout>
+                            <f:items>
+                                <f:GridListItem type="Active" unread="{unread}" press="onClick" highlightText="{gridListItemsModel>NODE_ID}" highlight="{= ${gridListItemsModel>STATUS} === 'ACT' ? 'Success' : ${gridListItemsModel>STATUS} === 'HOLD' ? 'Information' : ${gridListItemsModel>STATUS} === 'CMPL' ? 'Error' : ${gridListItemsModel>STATUS} === 'IDLE' ? 'Warning' : 'None' }">
+                                    <VBox class="sapUiResponsiveMargin">
+                                        <OverflowToolbar>
+                                            <Title text="{gridListItemsModel>NODE_ID}" class="TextRaft sapUiSmallMargin" wrapping = "false" />
+                                            <NumericContent value="{gridListItemsModel>ENERGY}" scale="OEE" icon="sap-icon://performance" withMargin="true" valueColor="{= ${gridListItemsModel>ENERGY} > 70 ? 'Good' : ${gridListItemsModel>ENERGY} > 50 ? 'Critical' : 'Error'}" indicator="{= ${gridListItemsModel>ENERGY} > 70 ? 'Up' : ${gridListItemsModel>ENERGY} > 50 ? 'None' : 'Down'}" class="sapUiSmallMargin" />
+                                        </OverflowToolbar>
+                                        <Text text="AUFNR: {gridListItemsModel>AUFNR}" class="TextGrid sapUiSmallMargin" />
+                                        <NumericContent value="{gridListItemsModel>QUANTITY}" scale="Ad" class="sapUiSmallMargin" icon="sap-icon://product" valueColor="{= ${gridListItemsModel>QUANTITY} > (${gridListItemsModel>TARGET_QUANTITY}/2) ? 'Good' : 'Critical' }" withMargin="true" />
+                                        <NumericContent value="{gridListItemsModel>SCRAP_QUANTITY}" scale="Ad" class="sapUiSmallMargin" icon="sap-icon://delete" valueColor="Error" withMargin="true" />
+                                        <NumericContent value="{gridListItemsModel>TARGET_QUANTITY}" scale="Ad" class="sapUiSmallMargin" icon="sap-icon://target-group" withMargin="true" />
+                                        <HBox>
+                                            <mc:RadialMicroChart size="Responsive" percentage="45" class="sapUiSmallMargin"></mc:RadialMicroChart>
+                                            <mc:RadialMicroChart size="Responsive" percentage="45" class="sapUiSmallMargin"></mc:RadialMicroChart>
+                                            <mc:RadialMicroChart size="Responsive" percentage="45" class="sapUiSmallMargin"></mc:RadialMicroChart>
+                                        </HBox>
+                                    </VBox>
+                                </f:GridListItem>
+                            </f:items>
+                        </f:GridList>
+                    </l:content>
+                </l:Grid>
+            </Page>
+        </pages>
+    </App>
+</mvc:View>

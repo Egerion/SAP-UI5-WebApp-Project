@@ -1,0 +1,71 @@
+<mvc:View 
+    xmlns="sap.m"
+    displayBlock="true"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:u="sap.ui.core"
+    xmlns:form="sap.ui.layout.form" 
+    xmlns:f="sap.f"
+    xmlns:card="sap.f.cards"
+	xmlns:w="sap.ui.integration.widgets"
+    xmlns:html="http://www.w3.org/1999/xhtml"
+    controllerName="com.ed.mii.controller.faceLogin">
+    <App id="faceLoginApp">
+        <pages>
+            <Page id="faceLoginPage" title="Face Recognition">
+                <content>
+                    <Panel>
+                        <VBox>
+                            <HBox>
+                                <Label text="Password Login" class="genericLeftLabel"></Label>
+                                <Label text="Face ID Login" class="genericMiddleLabel"></Label>
+                                <Label text="Registration" class="genericRightLabel"></Label> 
+                            </HBox>
+                        </VBox>
+                        <HBox>
+                            <VBox>
+                                <Input id="ILogUsername" class="genericLeftInput" placeholder="enter username" width="60%"></Input>
+                                <Input id="ILogPassword" class="genericLeftInput" placeholder="enter password" width="60%"></Input>
+                            </VBox>
+                            <VBox>
+                                <html:html>
+                                    <html:head>
+                                        <!-- <html:script src="../face-api/js/script.js"></html:script>
+                                        <html:script defer="" src="face-api.min.js"></html:script>
+                                        <html:script defer="" src="script.js"></html:script> -->
+                                    </html:head>
+                                    <html:body>
+                                        <html:form id="input-form">
+                                            
+                                            <html:div style="text-align:center">
+                                                <html:video id="videoInput" class="vid-border" autoplay="" muted=""></html:video>
+                                            </html:div>
+                                            <html:canvas id="canvas" width="426px" height="320px"></html:canvas>
+                                        </html:form>
+                                    </html:body>
+                                </html:html>      
+                            </VBox>
+                            <VBox>
+                                <Input id="IRegName" class="genericRegInput" placeholder="enter name" width="60%"></Input>
+                                <Input id="IRegSurname" class="genericRegInput" placeholder="enter surname" width="60%"></Input>
+                                <Input id="IRegUserName" class="genericRegInput" placeholder="enter username" width="60%"></Input>
+                                <Input id="IRegPassword" class="genericRegInput" placeholder="enter password" width="60%"></Input>
+                                <Button id="buttonRegister" class="genericRightButton" text="Open Camera" press="onPressHandleCamera"></Button>
+                            </VBox>
+                        </HBox>    
+                        <HBox>
+                            <VBox>
+                                <Button class="genericLeftButton" text="Login" press="onLoginUserWithPassword"></Button>  
+                            </VBox>
+                            <VBox>
+                                <Button class="genericMiddleButton" text="Face ID Login" press="onLoginUserWithFaceDetection"></Button>  
+                            </VBox>
+                            <VBox>
+                                <Button class="genericRightButton" text="Register" press="onPressCreateNewUser"></Button>
+                            </VBox>
+                        </HBox>     
+                    </Panel>
+                </content>
+            </Page>
+        </pages>
+    </App>
+</mvc:View>

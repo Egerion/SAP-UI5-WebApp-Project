@@ -26,6 +26,9 @@ sap.ui.define(
         onPressOEEDashboardpage: function(oEvent){
             sap.ui.core.UIComponent.getRouterFor(this).navTo("oeeDashboard");
         },
+        onPressFaceLoginPage: function(oEvent){
+            sap.ui.core.UIComponent.getRouterFor(this).navTo("faceLogin");
+        },
         });
     }
 );

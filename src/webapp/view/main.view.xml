@@ -56,6 +56,18 @@
                                     <ImageContent src="sap-icon://developer-settings" />
                                 </TileContent>
                             </GenericTile>
+
+                            <!-- Face Detection -->
+                            <GenericTile header="Face Recog" subheader="" press="onPressFaceLoginPage">
+                                <layoutData>
+                                    <f:GridContainerItemLayoutData minRows="2" columns="2" />
+                                </layoutData>
+                                <TileContent>
+                                    <ImageContent src="sap-icon://developer-settings" />
+                                </TileContent>
+                            </GenericTile>
+
+
                             <f:Card class="sapUiMediumMargin" width="300px">
                                 <f:header>
                                     <card:Header title="OEE Dashboards" subtitle="main panel to check production performance" press="onPressOEEDashboardpage"/>

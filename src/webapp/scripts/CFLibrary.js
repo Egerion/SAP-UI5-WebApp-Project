@@ -21,10 +21,32 @@ function CFxmlHttpReqXacute(oPath, oParam, targetFunc = undefined){
         url:"/XMII/Illuminator?QueryTemplate=" +oPath +"&" +paramsData +"&Content-Type=text/json",
         dataType: "json",
         success: function (response) {
-            if(typeof targetFunc !== "undefined")
+            if(typeof targetFunc !== "undefined"){
                 targetFunc.bind(this)(response);
+            }
             result = response;
         }.bind(this),
     });
     return result;
+}
+
+function xmlHttpReqXacute(xacutePath, params, sourceView) {
+    if (sourceView) {
+        sourceView.setBusyIndicatorDelay(0);
+        sourceView.open();
+    }
+    var xmlHttp = new XMLHttpRequest(),
+        url = "",
+        response;
+    url = "/XMII/Illuminator?QueryTemplate=" + xacutePath + "&" + params + "&Content-Type=text/json";
+    xmlHttp.onreadystatechange = function () {
+        if (xmlHttp.readyState == 4) {
+            response = JSON.parse(xmlHttp.responseText);
+        }
+    }
+    xmlHttp.open("GET", url, false);
+    xmlHttp.send();
+    if (sourceView) {
+        sourceView.close();
+    } return response;
 }
